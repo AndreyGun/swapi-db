@@ -1,0 +1,31 @@
+.random-planet {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background: #383232;
+}
+.planet-info-block {
+    flex: 1;
+    padding-left: 10px;
+}
+.planet-name {
+    padding: 0 0 10px 0;
+}
+.planet-info {
+    padding: 0 0 10px 0;
+    margin: 0 0 0 20px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.39);
+}
+.planet-image {
+    flex-shrink: 0;
+    width: 30%;
+    flex-shrink: 0;
+    background: red;
+    border-radius: 10px;
+}
+.planet-image:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
