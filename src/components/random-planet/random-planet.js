@@ -7,7 +7,7 @@ const RandomPlanet = () => {
         <div className="random-planet">
             <div className="planet-image"></div>
             <div className="planet-info-block">
-                <h3 class="planet-name">Planet Name</h3>
+                <h3 className="planet-name">Planet Name</h3>
 
                 <div className="planet-info planet-population">
 
