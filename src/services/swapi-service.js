@@ -46,14 +46,14 @@ const swapi = new SwapiService();
 // 	console.log(r);
 // });
 
-swapi.getAllStarships()
-    .then((people) => {
-        people.forEach((p) => {
-            console.log(p.name);
-        })
-    });
-swapi.getStarship(3)
-    .then((st) => {
-        console.log('****************');
-        console.log(st.name);
-    });
+// swapi.getAllStarships()
+//     .then((people) => {
+//         people.forEach((p) => {
+//             console.log(p.name);
+//         })
+//     });
+// swapi.getStarship(3)
+//     .then((st) => {
+//         console.log('****************');
+//         console.log(st.name);
+//     });

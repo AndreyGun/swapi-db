@@ -15,12 +15,12 @@
     justify-content: space-around;
     text-align: left;
 }
-.list-item {
+.header-list .list-item {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     color: #D5C377;
 }
-.list-item:hover {
+.header-list .list-item:hover {
     text-decoration: underline;
 }
