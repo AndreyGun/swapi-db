@@ -12,8 +12,10 @@ const App = () => {
         <div className="app-container">
             <Header />
             <RandomPlanet />
-            <ItemList />
-            <PersonDetails />
+            <div className="item-info-block">
+                <ItemList />
+                <PersonDetails />
+            </div>
         </div>
     );
 }

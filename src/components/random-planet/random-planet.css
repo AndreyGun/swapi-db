@@ -1,13 +1,10 @@
 .random-planet {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    grid-gap: 10px;
     padding: 20px;
     border-radius: 10px;
     background: #383232;
-}
-.planet-info-block {
-    flex: 1;
-    padding-left: 10px;
 }
 .planet-name {
     padding: 0 0 10px 0;
@@ -18,9 +15,6 @@
     border-bottom: 1px solid rgba(204, 204, 204, 0.39);
 }
 .planet-image {
-    flex-shrink: 0;
-    width: 30%;
-    flex-shrink: 0;
     border-radius: 10px;
     overflow: hidden;
 }
