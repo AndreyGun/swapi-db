@@ -3,3 +3,9 @@
     max-width: 960px;
     width: 80%;
 }
+.toggleRandomPlanetBtn {
+    margin-top: 10px;
+    color: #222;
+    font-weight: bolder;
+    background: orange;
+}

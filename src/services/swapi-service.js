@@ -1,4 +1,4 @@
-import { strict } from "assert";
+
 
 export default class SwapiService {
 
@@ -48,8 +48,7 @@ export default class SwapiService {
         const regExp = /\/([0-9]*)\/$/;
         return item.url.match(regExp)[1];
     }
-    _transformPlanet(planet) {
-
+    _transformPlanet = (planet) => {
         return {
             id: this._extractId(planet),
             name: planet.name,
