@@ -6,6 +6,7 @@
 .item-info-block {
     display: grid;
     grid-template-columns: 40% 1fr;
+    align-items: flex-start;
     grid-gap: 20px;
     margin-top: 20px;
 }

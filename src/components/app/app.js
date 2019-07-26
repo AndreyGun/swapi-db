@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details'
-import Spinner from '../spinner';
+import PersonDetails from '../person-details';
 
 import './app.css'
 
 export default class App extends Component {
 
     state = {
-        toggleRandomPlanet: true
+        toggleRandomPlanet: true,
+        selectedPerson: 5
     }
 
     onToggleRadomPlanet = () => {
@@ -19,6 +19,12 @@ export default class App extends Component {
             return {
                 toggleRandomPlanet: !toggleRandomPlanet
             }
+        });
+    }
+
+    onPersonSelected = (id) => {
+        this.setState({ 
+            selectedPerson: id
         });
     }
 
@@ -37,8 +43,9 @@ export default class App extends Component {
                         Toggle Random Planet
                 </button>
                 <div className="item-info-block">
-                    <ItemList />
-                    <PersonDetails />
+                    <ItemList 
+                        onItemSelected={this.onPersonSelected}/>
+                    <PersonDetails personId={this.state.selectedPerson} />
                 </div>
             </div>
         );

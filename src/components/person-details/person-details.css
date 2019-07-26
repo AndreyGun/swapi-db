@@ -15,13 +15,11 @@
 }
 .person-image {
     flex-shrink: 0;
-    width: 30%;
+    width: 160px;
     flex-shrink: 0;
-    background: red;
     border-radius: 10px;
+    overflow: hidden;
 }
-.person-image:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
+.person-image img {
+    width: 100%;
 }
