@@ -1,0 +1,25 @@
+.person-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background: #383232;
+}
+.person-info-block {
+    flex: 1;
+    padding-left: 10px;
+}
+.person-info {
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.39);
+}
+.person-image {
+    flex-shrink: 0;
+    width: 160px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.person-image img {
+    width: 100%;
+}
