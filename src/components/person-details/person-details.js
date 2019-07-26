@@ -30,9 +30,12 @@ export default class PersonDetails extends Component {
     componentDidUpdate(prevprops) {
         // делать if обязательно если в ходе выполнение
         // функции будут в итоге меняться state -> this.setState();
+
+
         if ( this.props.personId != prevprops.personId ) {
             this.updatePerson()
         }
+        console.log('g');
     }
 
 
