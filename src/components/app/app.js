@@ -6,12 +6,14 @@ import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 
 import './app.css'
+import ErrorIndicator from '../error-indicator';
 
 export default class App extends Component {
 
     state = {
         toggleRandomPlanet: true,
-        selectedPerson: 5
+        selectedPerson: 4,
+        hasError: false
     }
 
     onToggleRadomPlanet = () => {
@@ -23,12 +25,20 @@ export default class App extends Component {
     }
 
     onPersonSelected = (id) => {
-        this.setState({ 
+        this.setState({
             selectedPerson: id
         });
     }
+    
+    componentDidCatch() {
+        this.setState({hasError: true});
+    }
 
     render() {
+        console.log(this.state.hasError );
+        if ( this.state.hasError ) {
+            return <ErrorIndicator />
+        }
 
         const { toggleRandomPlanet } = this.state;
 

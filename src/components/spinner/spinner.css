@@ -38,6 +38,9 @@
       transform: rotate(-360deg);
     }
   }
+  .lds-css {
+    margin: auto;
+  }
   .lds-double-ring {
     position: relative;
     margin: 10px auto 0;

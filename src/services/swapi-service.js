@@ -57,7 +57,7 @@ export default class SwapiService {
             diameter: planet.diameter
         }
     }
-    _transformStarship= (starship) => {
+    _transformStarship = (starship) => {
         return {
             id: this._extractId(starship),
             name: starship.name,
@@ -80,20 +80,3 @@ export default class SwapiService {
         }
     }
 }
-
-// const swapi = new SwapiService();
-// swapi.getAllPeople().then((r) => {
-// 	console.log(r);
-// });
-
-// swapi.getAllStarships()
-//     .then((people) => {
-//         people.forEach((p) => {
-//             console.log(p.name);
-//         })
-//     });
-// swapi.getStarship(3)
-//     .then((st) => {
-//         console.log('****************');
-//         console.log(st.name);
-//     });
