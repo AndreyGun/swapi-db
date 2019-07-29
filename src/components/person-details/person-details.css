@@ -10,6 +10,7 @@
     padding-left: 10px;
 }
 .person-info {
+    margin-bottom: 10px;
     padding: 5px 0 5px 0;
     border-bottom: 1px solid rgba(204, 204, 204, 0.39);
 }

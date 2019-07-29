@@ -10,7 +10,6 @@
     grid-gap: 20px;
     margin-top: 20px;
 }
-
 @media screen and (max-width: 800px) {
     .item-info-block {
         grid-template-columns: 1fr;
