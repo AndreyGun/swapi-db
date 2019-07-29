@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
+import ErrorIndicator from '../error-indicator';
 
 export default class PersonPage extends Component {
     
     state = {
-        selectedPerson: 3
+        selectedPerson: 3,
+        hasError: false
+    }
+
+    componentDidCatch() {
+        this.setState({ 
+            hasError: true
+        });
     }
 
     onPersonSelected = (selectedPerson) => {
@@ -14,6 +22,11 @@ export default class PersonPage extends Component {
     }
 
     render() {
+
+        if (this.state.hasError) {
+            return <ErrorIndicator />
+        }
+
         return(
             <div className="item-info-block">
                 <ItemList 

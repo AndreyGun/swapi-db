@@ -5,18 +5,18 @@ import './error-button.css';
 export default class ErrorButton extends Component {
 
     state = {
-        throwError: false
+        hasError: false
     }
 
     render() {
 
-      if (this.state.throwError) {
+      if (this.state.hasError) {
           this.foo.bar = 0;
       }
 
       return (
           <button className="btn error-button"
-            onClick={ () => this.setState({ throwError: true }) }>
+            onClick={ () => this.setState({ hasError: true }) }>
             Throw Error
           </button>
       )  
