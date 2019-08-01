@@ -1,16 +1,19 @@
 
 import React, { Component } from 'react';
+
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ItemList from '../item-list';
-import PersonDetails from '../person-details';
-
-import './app.css'
 import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
-import PersonPage from '../person-page/person-page';
+import Row from '../row';
+import ItemDetails from '../item-details';
+import SwapiService from '../../services/swapi-service';
+
+import './app.css'
 
 export default class App extends Component {
+
+    swapiService = new SwapiService();
 
     state = {
         toggleRandomPlanet: true,
@@ -30,14 +33,30 @@ export default class App extends Component {
     }
 
     render() {
-        console.log(this.state.hasError );
         if ( this.state.hasError ) {
             return <ErrorIndicator />
         }
 
-        const { toggleRandomPlanet } = this.state;
+        const togglePlanet = this.state.toggleRandomPlanet ?
+            <RandomPlanet /> :
+            null;
 
-        const togglePlanet = toggleRandomPlanet ? <RandomPlanet /> : null;
+        const { getPerson, getStarship, 
+            getPersonImage, getStarshipImage } = this.swapiService;
+        
+        const personDetails = (
+            <ItemDetails 
+                itemId={11}
+                getData={getPerson}
+                getImageUrl={getPersonImage} />
+        );
+
+        const starshipDetails = (
+            <ItemDetails 
+                itemId={5}
+                getData={getStarship}
+                getImageUrl={getStarshipImage} />
+        );
 
         return(
             <div className="app-container">
@@ -50,8 +69,11 @@ export default class App extends Component {
                     </button>
                     <ErrorButton />
                 </div>
-                <PersonPage />
+                <Row 
+                    leftItem={personDetails}
+                    rightItem={starshipDetails}
+                />
             </div>
         );
     }
-}
+} 

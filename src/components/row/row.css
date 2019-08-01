@@ -1,0 +1,12 @@
+.info-group-block {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    align-items: flex-start;
+    grid-gap: 20px;
+    margin-top: 20px;
+}
+@media screen and (max-width: 800px) {
+    .info-group-block {
+        grid-template-columns: 1fr;
+    }
+}
