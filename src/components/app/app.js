@@ -10,6 +10,15 @@ import ItemDetails, { Record } from '../item-details/item-details';
 import SwapiService from '../../services/swapi-service';
 import ItemList from '../item-list';
 
+import {
+    PersonList,
+    PlanetList,
+    StarshipList,
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails
+} from '../sw-components';
+
 import './app.css'
 
 export default class App extends Component {
@@ -42,42 +51,15 @@ export default class App extends Component {
             <RandomPlanet /> :
             null;
 
-        const { getAllPeople, getAllPlanets, getPerson, getStarship, 
-            getPersonImage, getStarshipImage } = this.swapiService;
-        
-        const personDetails = (
-            <ItemDetails 
-                itemId={11}
-                getData={getPerson}
-                getImageUrl={getPersonImage} >
-
-                <Record field="gender" label="Gender" />
-                <Record field="eyeColor" label="Eye Color" />
-
-            </ItemDetails>
-        );
-
-        const starshipDetails = (
-            <ItemDetails 
-                itemId={3}
-                getData={getStarship}
-                getImageUrl={getStarshipImage} >
-
-                <Record  field="name" label="Name" />
-                <Record  field="manufacturer" label="Manufacturer" />
-            </ItemDetails>
-        );
         const personList = (
-            <ItemList 
-                    getData={getAllPeople}>
-                    { ({name}) => <span>{name}</span> }
-                </ItemList>
+            <PersonList>
+                { ({name}) => <span>{name}</span>}
+            </PersonList>
         );
         const planetsList = (
-            <ItemList 
-                    getData={getAllPlanets}>
-                    {({name}) => <span>{name}</span>}
-            </ItemList>
+            <PlanetList>
+                { ({name}) => <span>{name}</span>}
+            </PlanetList>
         );
         return(
             <div className="app-container">
@@ -89,10 +71,20 @@ export default class App extends Component {
                     </button>
                     <ErrorButton />
                 </div>
-                <Row 
-                    leftItem={personList}
-                    rightItem={planetsList}
-                />
+
+                <PersonDetails itemId={11} />
+                <StarshipDetails itemId={11} />
+                <PlanetDetails itemId={3} />
+                
+                <div className="info-group-block">
+                    <PersonList/>
+                </div>
+                <div className="info-group-block">
+                    <PlanetList/>
+                </div>
+                <div className="info-group-block">
+                    <StarshipList/>
+                </div>
             </div>
         );
     }
