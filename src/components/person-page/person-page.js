@@ -4,21 +4,15 @@ import ItemList from '../item-list';
 import ItemDetails from '../item-details';
 import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
+import ErrorBoundry from '../error-boundry';
 import Row from '../row';
-
-class ErrorBoundry extends Component {
-    render() {
-        return this.props.children;
-    };
-}
 
 export default class PersonPage extends Component {
     
     swapiService = new SwapiService();
 
     state = {
-        selectedPerson: 3,
-        hasError: false
+        selectedPerson: 3
     }
 
     componentDidCatch() {
@@ -45,7 +39,8 @@ export default class PersonPage extends Component {
 
         const personDetails = (
             <ErrorBoundry>
-                <ItemDetails personId={this.state.selectedPerson} />
+                <ItemDetails 
+                    personId={this.state.selectedPerson} />
             </ErrorBoundry>
         );
 

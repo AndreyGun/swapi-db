@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 
 import SwapiService from '../../services/swapi-service';
-import Spinner from '../spinner';
-import ErrorIndicator from '../error-indicator';
-import ErrorButton from '../error-button';
 
 import './item-details.css'
+
+
+const Record = ({ item, field, label }) => {
+    return(
+        <div className="item-info">
+            <span>{label}: </span>
+            <span>{ item[field] }</span>
+        </div>
+    );
+}
+export {
+    Record
+};
 
 export default class ItemDetails extends Component {
     
@@ -13,12 +23,22 @@ export default class ItemDetails extends Component {
 
     state = {
         item: null,
-        image: null,
-        loading: true
+        image: null
     }
 
     componentDidMount() {
         this.updateItem();
+    }
+
+    componentDidUpdate(prevProps) {
+        // делать if обязательно если в ходе выполнение
+        // функции будут в итоге меняться state -> this.setState();
+        if ( this.props.itemId !== prevProps.itemId ) {
+            this.setState({
+                loading: true
+            });
+            this.updateItem()
+        }
     }
     updateItem() {
         const { itemId, getData, getImageUrl } = this.props;
@@ -36,63 +56,31 @@ export default class ItemDetails extends Component {
             .catch(this.onError);
     }
 
-    componentDidUpdate(prevprops) {
-        // делать if обязательно если в ходе выполнение
-        // функции будут в итоге меняться state -> this.setState();
-        if ( this.props.itemId != prevprops.itemId ) {
-            this.setState({
-                loading: true
-            });
-            this.updateItem()
-        }
-    }
-
 
     render() {
-
+        const { item , image  } = this.state;
         if ( !this.state.item ) {
-            //return <span>Please select item from a list</span>
+            return <span>Please select item from a list</span>
         }
 
-        const { item, loading } = this.state;
-
-        const itemView = loading ? <Spinner /> : <ItemView item={item} />;
-
+        const { name } = item;
         return(
             <div className="item-details">
-              {itemView}
+                <div className="item-image">
+                    <img src={image} alt="item"/>
+                </div>
+                <div className="item-info-block">
+                    <h3>{name}</h3>
+                    <div>
+                    {
+                        React.Children.map(this.props.children, (child) => {
+                            return React.cloneElement(child, { item });
+                        })
+                    }
+                    </div>
+                
+                </div>
             </div>
         );
     }
-}
-
-const ItemView = ({ item }) => {
-
-    const { name, gender, birthYear, eyeColor, image} = item;
-
-    return(
-        <React.Fragment>
-            <div className="item-image">
-                <img src={image} />
-            </div>
-            <div className="item-info-block">
-                <h3 className="item-name">{name} </h3>
-
-                <div className="item-info">
-                    <span>Gender: </span>
-                    <span className="item-gender">{gender}</span>
-                </div>
-                <div className="item-info">
-                    <span>Birth Year: </span>
-                    <span className="item-birth">{birthYear}</span>
-                </div>
-
-                <div className="item-info">
-                    <span>Eye color: </span>
-                    <span className="item-eye-color">{eyeColor}</span>
-                </div>
-              <ErrorButton />
-            </div>
-        </React.Fragment>
-    );
 }

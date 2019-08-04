@@ -6,8 +6,9 @@ import RandomPlanet from '../random-planet';
 import ErrorIndicator from '../error-indicator';
 import ErrorButton from '../error-button';
 import Row from '../row';
-import ItemDetails from '../item-details';
+import ItemDetails, { Record } from '../item-details/item-details';
 import SwapiService from '../../services/swapi-service';
+import ItemList from '../item-list';
 
 import './app.css'
 
@@ -41,27 +42,46 @@ export default class App extends Component {
             <RandomPlanet /> :
             null;
 
-        const { getPerson, getStarship, 
+        const { getAllPeople, getAllPlanets, getPerson, getStarship, 
             getPersonImage, getStarshipImage } = this.swapiService;
         
         const personDetails = (
             <ItemDetails 
                 itemId={11}
                 getData={getPerson}
-                getImageUrl={getPersonImage} />
+                getImageUrl={getPersonImage} >
+
+                <Record field="gender" label="Gender" />
+                <Record field="eyeColor" label="Eye Color" />
+
+            </ItemDetails>
         );
 
         const starshipDetails = (
             <ItemDetails 
-                itemId={5}
+                itemId={3}
                 getData={getStarship}
-                getImageUrl={getStarshipImage} />
-        );
+                getImageUrl={getStarshipImage} >
 
+                <Record  field="name" label="Name" />
+                <Record  field="manufacturer" label="Manufacturer" />
+            </ItemDetails>
+        );
+        const personList = (
+            <ItemList 
+                    getData={getAllPeople}>
+                    { ({name}) => <span>{name}</span> }
+                </ItemList>
+        );
+        const planetsList = (
+            <ItemList 
+                    getData={getAllPlanets}>
+                    {({name}) => <span>{name}</span>}
+            </ItemList>
+        );
         return(
             <div className="app-container">
                 <Header />
-                {togglePlanet}
                 <div className="functional-btns">
                     <button className="btn toggleRandomPlanetBtn"
                             onClick={this.onToggleRadomPlanet}>
@@ -70,8 +90,8 @@ export default class App extends Component {
                     <ErrorButton />
                 </div>
                 <Row 
-                    leftItem={personDetails}
-                    rightItem={starshipDetails}
+                    leftItem={personList}
+                    rightItem={planetsList}
                 />
             </div>
         );
