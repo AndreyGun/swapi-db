@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import Header from '../header';
@@ -8,6 +7,7 @@ import ErrorButton from '../error-button';
 import ErrorBoundry from '../error-boundry';
 import Row from '../row';
 import SwapiService from '../../services/swapi-service';
+import DummySwapiService from '../../services/dummy-swapi-service';
 import { SwapiServiceProvider } from '../swapi-service-context';
 
 import {
@@ -23,7 +23,7 @@ import './app.css'
 
 export default class App extends Component {
 
-    swapiService = new SwapiService();
+    swapiService = new DummySwapiService();
 
     state = {
         toggleRandomPlanet: true,
@@ -46,26 +46,12 @@ export default class App extends Component {
         if ( this.state.hasError ) {
             return <ErrorIndicator />
         }
-
-        const togglePlanet = this.state.toggleRandomPlanet ?
-            <RandomPlanet /> :
-            null;
-
-        const personList = (
-            <PersonList>
-                { ({name}) => <span>{name}</span>}
-            </PersonList>
-        );
-        const planetsList = (
-            <PlanetList>
-                { ({name}) => <span>{name}</span>}
-            </PlanetList>
-        );
         return(
             <ErrorBoundry>
                 <SwapiServiceProvider value={this.swapiService}>
                     <div className="app-container">
                         <Header />
+                        <RandomPlanet />
                         <div className="functional-btns">
                             <button className="btn toggleRandomPlanetBtn"
                                     onClick={this.onToggleRadomPlanet}>
@@ -88,4 +74,4 @@ export default class App extends Component {
             </ErrorBoundry>
         );
     }
-} 
+}

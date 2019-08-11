@@ -8,7 +8,7 @@ const PersonDetails = ({itemId}) => {
         <SwapiServiceConsumer>
         {   
             /* ниже аналогично этому: */
-            /* (swapiService) - Тот что передали в app */
+            /* (swapiService) => - Тот что передали в app */
             /* просто деструктурировали значения из swapiService */
             ({getPerson, getPersonImage }) => {
                 return(
