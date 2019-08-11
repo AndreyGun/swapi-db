@@ -4,21 +4,21 @@ import './error-button.css';
 
 export default class ErrorButton extends Component {
 
-    state = {
-        hasError: false
+  state = {
+    renderError: false
+  };
+
+  render() {
+    if (this.state.renderError) {
+      this.foo.bar = 0;
     }
 
-    render() {
-
-      if (this.state.hasError) {
-          this.foo.bar = 0;
-      }
-
-      return (
-          <button className="btn error-button"
-            onClick={ () => this.setState({ hasError: true }) }>
-            Throw Error
-          </button>
-      )  
-    };
+    return (
+      <button
+        className="error-button btn btn-danger btn-lg"
+        onClick={() => this.setState({renderError: true})}>
+        Throw Error
+      </button>
+    );
+  }
 }

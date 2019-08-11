@@ -1,17 +1,11 @@
-.item-list-block {
-    overflow: hidden;
-    border: 1px solid rgba(204, 204, 204, 0.39);
-    border-radius: 10px;
-    background: #383232;
+.item-list {
+  margin-bottom: 1rem;
 }
-.item-list-block .item-list {
-    cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid rgba(204, 204, 204, 0.39);
+
+.item-list .list-group-item {
+  cursor: pointer;
 }
-.item-list-block .item-list:hover {
-    background: #464040;
-}
-.item-list-block .item-list:last-child {
-    border: none;
+
+.item-list .list-group-item:hover {
+  background-color: #444;
 }

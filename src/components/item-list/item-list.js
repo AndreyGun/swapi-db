@@ -1,30 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import './item-list.css'
+import { withData } from '../hoc-helpers';
+import SwapiService from '../../services/swapi-service';
+import './item-list.css';
 
 const ItemList = (props) => {
-    const { data, onItemSelected, children: renderLabel } = props;
 
-    const items = data.map((item) => {
+  const { data, onItemSelected, children: renderLabel } = props;
 
-        const { id } = item;
-        const label = renderLabel(item);
-        return (
-            <div className="item-list"
-                key={id}
-                onClick={() => onItemSelected(id)}>
-                <span>
-                    {label}
-                </span>
-            </div>
-        )
-    })
+  const items = data.map((item) => {
+    const { id } = item;
+    const label = renderLabel(item);
 
-    return(
-        <div className="item-list-block">
-            {items}
-        </div>
+    return (
+      <li className="list-group-item"
+          key={id}
+          onClick={() => onItemSelected(id)}>
+        {label}
+      </li>
     );
-}
+  });
 
-export default ItemList;
+  return (
+    <ul className="item-list list-group">
+      {items}
+    </ul>
+  );
+};
+
+ItemList.defaultProps = {
+  onItemSelected: () => {}
+};
+
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired
+};
+
+const { getAllPeople } = new SwapiService();
+
+export default withData(ItemList, getAllPeople);

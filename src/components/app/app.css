@@ -1,16 +1,11 @@
-.app-container {
-    margin: 0 auto;
-    max-width: 960px;
-    width: 80%;
+.button-row {
+  margin: 0 0 1rem 0;
 }
-.toggleRandomPlanetBtn {
-    color: #222;
-    font-weight: bolder;
-    background: orange;
+
+.button-row button {
+  margin-right: 1rem;
 }
-.functional-btns {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 10px 0 0;
+
+.stardb-app .row {
+  margin-bottom: 1rem;
 }
